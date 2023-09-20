@@ -5,3 +5,10 @@
 .sidebar-design{
   background: linear-gradient(180deg, #EB6B9D 0%, rgba(255, 87, 87, 0.7) 138.64%);
 }
+
+.searchIcon{
+  background: linear-gradient(119.78deg, #FF5757 14.24%, rgba(255, 87, 87, 0) 134.54%);
+}
+.newBookingBg{
+  background: linear-gradient(178.41deg, #FB8085 1.35%, #FF5757 139.03%);
+}
