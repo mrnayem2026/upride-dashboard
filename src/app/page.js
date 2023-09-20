@@ -1,5 +1,7 @@
+import Searchbookings from "@/components/Searchbookings";
+
 export default function Home() {
   return (
-   <h1>Hello Nayem</h1>
+    <Searchbookings></Searchbookings>
   )
 }
