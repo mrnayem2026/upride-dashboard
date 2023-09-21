@@ -26,7 +26,7 @@ const SideBar = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
           {/* Logo  */}
-          <Image src={logo} className="pl-9"></Image>
+          <Image src={logo} className="pl-9" alt="logo"></Image>
 
           {/* Location Branch section Start  */}
           {/* TODO: Collaps Baki  */}
@@ -38,7 +38,7 @@ const SideBar = () => {
             {/* Home  */}
             <li className=" bg-[#D9D9D926]">
               <div className="pl-9 py-4 flex gap-7">
-                <Image src={home}></Image>
+                <Image src={home} alt="home"></Image>
                 <Link
                   href="/"
                   className="text-white font-semibold text-xl text-center"
@@ -51,7 +51,7 @@ const SideBar = () => {
             {/* My Earnings */}
             <li>
               <div className="pl-9 py-4 flex gap-7">
-                <Image src={MyEarningLogo}></Image>
+                <Image src={MyEarningLogo} alt="My Earning Logo"></Image>
                 <Link
                   href="/"
                   className="text-white font-semibold text-xl text-center"
@@ -64,7 +64,7 @@ const SideBar = () => {
             {/* My Services */}
             <li>
               <div className="pl-9 py-4 flex gap-7">
-                <Image src={MyServices}></Image>
+                <Image src={MyServices} alt="My Services"></Image>
                 <Link
                   href="/"
                   className="text-white font-semibold text-xl text-center"
@@ -77,7 +77,7 @@ const SideBar = () => {
             {/* My Assets */}
             <li>
               <div className="pl-9 py-4 flex gap-7">
-                <Image src={MyAssests}></Image>
+                <Image src={MyAssests} alt="My Assests"></Image>
                 <Link
                   href="/"
                   className="text-white font-semibold text-xl text-center"

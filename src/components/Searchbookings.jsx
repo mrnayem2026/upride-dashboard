@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 const Searchbookings = () => {
   return (
-    <div className="pl-9 py-4 flex gap-[800px]" >
+    <div className="pl-9 py-4 flex gap-[840px] h-[75px] border-b-2  shadow-[0_3px_10px_rgb(0,0,0,0.2)]" >
 
       <div className='flex gap-5'>
         {/* Search bookings Start */}
@@ -30,10 +30,10 @@ const Searchbookings = () => {
       </div>
 
       {/* profile section start  */}
-        <div className='rounded-full w-[168px] h-11 flex justify-center items-center gap-2 shadow-[0_3px_10px_rgb(0,0,0,0.2)]'>
-            <Image src={profile}></Image>
+        <div className='mr-10 rounded-full w-[168px] h-11 flex justify-center items-center gap-2 shadow-[0_3px_10px_rgb(0,0,0,0.2)]'>
+            <Image src={profile} alt='profile'></Image>
             <span className='text-base font-normal'>Hello Lokesh!</span>
-            <Image src={emoji}  className='w-3 h-3'></Image>
+            <Image src={emoji}  className='w-3 h-3' alt='emoji'></Image>
         </div>
       {/* profile section end  */}
     </div>
