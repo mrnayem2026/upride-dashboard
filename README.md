@@ -1,6 +1,6 @@
 # Upride Dashboard
 
-![Project Image]('/src/assest/webPic.png')
+![Project Image]('/src/webPic.png')
 
 ## Project Description
 
