@@ -6,9 +6,15 @@ import Pagination from "./Pagination";
 
 const ViewBookingTabs = () => {
   const [dataArray, setDataArray] = useState({});
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
 
+  const handleTabSelect = (index) => {
+    setActiveTabIndex(index);
+  };
+
+  // Call API 
   useEffect(async () => {
     const response = await fetch(
       "https://upride-internships-default-rtdb.firebaseio.com/.json"
@@ -60,11 +66,17 @@ const ViewBookingTabs = () => {
   return (
     <div className="pl-9">
       <Tabs className="designForTads w-fit">
-        <TabList className="flex space-x-4">
-          <Tab>Active</Tab>
-          <Tab>Completed</Tab>
-          <Tab>Cancelled</Tab>
-        </TabList>
+      <TabList className="flex space-x-4 pb-5">
+      <Tab className={`px-4 py-2 text-base font-semibold ${activeTabIndex === 0 ? 'text-red-400 border-b-2 border-red-400 focus:outline-none focus:border-none' : 'text-green-500'}`}>
+          Active
+        </Tab>
+        <Tab className={`px-4 py-2 text-base font-semibold ${activeTabIndex === 0 ? 'text-red-400 border-b-2 border-red-400 focus:outline-none focus:border-none' : 'text-gray-400'}`}>
+          Completed
+        </Tab>
+        <Tab className={`px-4 py-2 text-base font-semibold ${activeTabIndex === 0 ? 'text-red-400 border-b-2 border-red-400 focus:outline-none focus:border-none' : 'text-gray-400'}`}>
+          Cancelled
+        </Tab>
+      </TabList>
 
         {/* Tab Panel One  */}
         <TabPanel>

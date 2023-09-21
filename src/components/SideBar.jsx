@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { Open_Sans } from "next/font/google";
@@ -6,6 +7,7 @@ import home from "../assest/icons/home.png";
 import MyEarningLogo from "../assest/icons/MyEarningLogo.png";
 import MyServices from "../assest/icons/MyServices.png";
 import MyAssests from "../assest/icons/MyAssests.png";
+import { Accordion } from "flowbite-react";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -28,9 +30,7 @@ const SideBar = () => {
           {/* Logo  */}
           <Image src={logo} className="pl-9" alt="logo"></Image>
 
-          {/* Location Branch section Start  */}
-          {/* TODO: Collaps Baki  */}
-          {/* Location Branch section End  */}
+  
 
           {/* Menu Content Start  */}
           <ul className="menu  pt-6 w-80 min-h-full bg-base-200 text-base-content">
