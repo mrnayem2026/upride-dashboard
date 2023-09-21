@@ -1,6 +1,6 @@
 # Upride Dashboard
 
-![Project Image]('./src/assest/webPic.png')
+![Project Image]('/src/assest/webPic.png')
 
 ## Project Description
 
@@ -18,16 +18,16 @@ The **Upride Dashboard** is a simple and clean dashboard built using Next.js and
 
 ## Project Preview
 
-![Live Demo]('./src/assest/webPic.png')
+![Live Demo]('/src/assest/webPic.png')
 
-You can access the live demo of the Upride Dashboard at [project-live-url.com](https://www.project-live-url.com).
+You can access the live demo of the Upride Dashboard at [upride-dashboard.vercel.app/](https://upride-dashboard.vercel.app/).
 
 ## How to Run
 
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/upride-dashboard.git
+   git clone https://github.com/mrnayem2026/upride-dashboard.git
    ```
 
 2. Navigate to the project directory:
