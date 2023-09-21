@@ -2,9 +2,12 @@
 import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import Pagination from "./Pagination";
 
 const ViewBookingTabs = () => {
   const [dataArray, setDataArray] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(6);
 
   useEffect(async () => {
     const response = await fetch(
@@ -14,30 +17,55 @@ const ViewBookingTabs = () => {
     setDataArray(data.offline_bookings);
   }, []);
 
+  // Convert Array from Object
   const arrayOfObjects = Object.keys(dataArray).map((key) => ({
     bookingID: key,
     ...dataArray[key],
   }));
 
+  // Set SUCCESS Item
   const SUCCESS = arrayOfObjects.filter(
     (item) => item?.bookingStatus === "SUCCESS"
   );
-  const CANCELLED = arrayOfObjects.filter(
-    (item) => item?.bookingStatus === "CANCELLED"
-  );
+
+  // Paginattion  For SUCCESS
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPostsForSuccess = SUCCESS?.slice(firstPostIndex, lastPostIndex);
+
+  // Set COMPLETED Item
   const COMPLETED = arrayOfObjects.filter(
     (item) => item?.bookingStatus === "COMPLETED"
   );
-  console.log(COMPLETED);
+  // Paginattion  For COMPLETED
+  const lastPostIndexCOMPLETED = currentPage * postsPerPage;
+  const firstPostIndexCOMPLETED = lastPostIndexCOMPLETED - postsPerPage;
+  const currentPostsForSuccessCOMPLETED = COMPLETED?.slice(
+    firstPostIndexCOMPLETED,
+    lastPostIndexCOMPLETED
+  );
+
+  // Set CANCELLED Item
+  const CANCELLED = arrayOfObjects.filter(
+    (item) => item?.bookingStatus === "CANCELLED"
+  );
+  //  Paginattion  For CANCELLED
+  const lastPostIndexCancelled = currentPage * postsPerPage;
+  const firstPostIndexCancelled = lastPostIndexCancelled - postsPerPage;
+  const currentPostsForPaginattion = CANCELLED?.slice(
+    firstPostIndexCancelled,
+    lastPostIndexCancelled
+  );
 
   return (
     <div className="pl-9">
       <Tabs className="designForTads w-fit">
-        <TabList>
-          <Tab>Active </Tab>
+        <TabList className="flex space-x-4">
+          <Tab>Active</Tab>
           <Tab>Completed</Tab>
           <Tab>Cancelled</Tab>
         </TabList>
+
         {/* Tab Panel One  */}
         <TabPanel>
           <div className="overflow-x-auto">
@@ -54,8 +82,8 @@ const ViewBookingTabs = () => {
               </thead>
               <tbody>
                 {/* row 1 */}
-                {SUCCESS?.slice(0, 6)?.map((item) => (
-                  <tr>
+                {currentPostsForSuccess?.map((item) => (
+                  <tr key={item.bookingID}>
                     <td className="pt-6 pl-4">
                       <div className="flex items-center space-x-3">
                         <div className="avatar">
@@ -88,8 +116,17 @@ const ViewBookingTabs = () => {
                   </tr>
                 ))}
               </tbody>
+              
             </table>
           </div>
+          <div className=" flex justify-center items-center">
+                  <Pagination
+                    totalPosts={SUCCESS.length}
+                    postsPerPage={postsPerPage}
+                    setCurrentPage={setCurrentPage}
+                    currentPage={currentPage}
+                  />
+                </div>
         </TabPanel>
 
         {/* Tab Panel Tow  */}
@@ -108,8 +145,8 @@ const ViewBookingTabs = () => {
               </thead>
               <tbody>
                 {/* row 1 */}
-                {COMPLETED?.slice(0, 6)?.map((item) => (
-                  <tr>
+                {currentPostsForSuccessCOMPLETED?.map((item) => (
+                  <tr key={item.bookingID}>
                     <td className="pt-6 pl-4">
                       <div className="flex items-center space-x-3">
                         <div className="avatar">
@@ -144,6 +181,15 @@ const ViewBookingTabs = () => {
               </tbody>
             </table>
           </div>
+          <div className=" flex justify-center items-center">
+                  <Pagination
+                    totalPosts={CANCELLED.length}
+                    postsPerPage={postsPerPage}
+                    setCurrentPage={setCurrentPage}
+                    currentPage={currentPage}
+                  />
+                </div>
+          
         </TabPanel>
 
         {/* Tab Panel There  */}
@@ -162,8 +208,8 @@ const ViewBookingTabs = () => {
               </thead>
               <tbody>
                 {/* row 1 */}
-                {CANCELLED?.slice(0, 6)?.map((item) => (
-                  <tr>
+                {currentPostsForPaginattion?.map((item) => (
+                  <tr key={item.bookingID}>
                     <td className="pt-6 pl-4">
                       <div className="flex items-center space-x-3">
                         <div className="avatar">
@@ -195,11 +241,19 @@ const ViewBookingTabs = () => {
                     </td>
                   </tr>
                 ))}
+
               </tbody>
             </table>
+            
+              
+            <Pagination
+                  totalPosts={CANCELLED.length}
+                  postsPerPage={postsPerPage}
+                  setCurrentPage={setCurrentPage}
+                  currentPage={currentPage}
+                />
           </div>
         </TabPanel>
-        
       </Tabs>
     </div>
   );
